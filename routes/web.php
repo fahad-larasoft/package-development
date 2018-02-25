@@ -18,4 +18,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index');
+
+// change your existing app route to this:
+// we are basically just giving it an optional parameter of "anything"
+Route::get('/{path?}', 'HomeController@index')->where('path', '.*');
+//regex to match anything (dots, slashes, letters, numbers, etc)

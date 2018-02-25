@@ -1,4 +1,8 @@
 
+import React from "react";
+import ReactDOM from "react-dom";
+import {Router, Route, IndexRoute, browserHistory} from "react-router";
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -14,3 +18,21 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+import Layout from "./components/Layout";
+import Home from "./components/Home";
+import Users from "./components/Users";
+import Articles from "./components/Articles";
+
+const app = document.getElementById('app');
+
+ReactDOM.render(
+    <Router history={browserHistory}>
+        <Route path="/" component={Layout}>
+            <Route path="/home" component={Users}></Route>
+            <IndexRoute component={Home}></IndexRoute>
+            <Route path="/users" component={Users}></Route>
+            <Route path="/articles" component={Articles}></Route>
+        </Route>
+    </Router>,
+    app);
